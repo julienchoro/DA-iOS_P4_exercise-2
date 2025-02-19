@@ -7,27 +7,7 @@ struct UserListView: View {
     var body: some View {
         NavigationView {
             if !model.isGridView {
-                List(model.users) { user in
-                    NavigationLink(destination: UserDetailView(user: user)) {
-                        HStack {
-                            userImage(url: user.picture.thumbnail, size: 50)
-                            
-                            VStack(alignment: .leading) {
-                                Text("\(user.name.first) \(user.name.last)")
-                                    .font(.headline)
-                                Text("\(user.dob.date)")
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
-                    .onAppear {
-                        if model.shouldLoadMoreData(currentItem: user) {
-                            Task {
-                                await model.fetchUsers()
-                            }
-                        }
-                    }
-                }
+                listView
                 .navigationTitle("Users")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,28 +18,7 @@ struct UserListView: View {
                     }
                 }
             } else {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
-                        ForEach(model.users) { user in
-                            NavigationLink(destination: UserDetailView(user: user)) {
-                                VStack {
-                                    userImage(url: user.picture.medium, size: 150)
-
-                                    Text("\(user.name.first) \(user.name.last)")
-                                        .font(.headline)
-                                        .multilineTextAlignment(.center)
-                                }
-                            }
-                            .onAppear {
-                                if model.shouldLoadMoreData(currentItem: user) {
-                                    Task {
-                                        await model.fetchUsers()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                gridView
                 .navigationTitle("Users")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,6 +33,53 @@ struct UserListView: View {
         .onAppear {
             Task {
                 await model.fetchUsers()
+            }
+        }
+    }
+    
+    private var gridView: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                ForEach(model.users) { user in
+                    NavigationLink(destination: UserDetailView(user: user)) {
+                        VStack {
+                            userImage(url: user.picture.medium, size: 150)
+
+                            Text("\(user.name.first) \(user.name.last)")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                        }
+                    }
+                    .onAppear {
+                        if model.shouldLoadMoreData(currentItem: user) {
+                            Task {
+                                await model.fetchUsers()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private var listView: some View {
+        List(model.users) { user in
+            NavigationLink(destination: UserDetailView(user: user)) {
+                HStack {
+                    userImage(url: user.picture.thumbnail, size: 50)
+                    
+                    VStack(alignment: .leading) {
+                        Text("\(user.name.first) \(user.name.last)")
+                            .font(.headline)
+                        Text("\(user.dob.date)")
+                            .font(.subheadline)
+                    }
+                }
+            }
+            .task {
+                if model.shouldLoadMoreData(currentItem: user) {
+                    await model.fetchUsers()
+                }
             }
         }
     }
