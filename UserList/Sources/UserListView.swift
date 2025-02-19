@@ -15,12 +15,7 @@ struct UserListView: View {
             }
             .navigationTitle("Users")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    viewModePicker
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    reloadButton
-                }
+                toolbarContent
             }
         }
         .onAppear {
@@ -111,6 +106,17 @@ struct UserListView: View {
         } label: {
             Image(systemName: "arrow.clockwise")
                 .imageScale(.large)
+        }
+    }
+    
+    private var toolbarContent: some ToolbarContent {
+        Group {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                viewModePicker
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                reloadButton
+            }
         }
     }
     
