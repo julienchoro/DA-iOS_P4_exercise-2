@@ -6,27 +6,20 @@ struct UserListView: View {
     
     var body: some View {
         NavigationView {
-            if !model.isGridView {
-                listView
-                .navigationTitle("Users")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        viewModePicker
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        reloadButton
-                    }
+            Group {
+                if !model.isGridView {
+                    listView
+                } else {
+                    gridView
                 }
-            } else {
-                gridView
-                .navigationTitle("Users")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        viewModePicker
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        reloadButton
-                    }
+            }
+            .navigationTitle("Users")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    viewModePicker
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    reloadButton
                 }
             }
         }
