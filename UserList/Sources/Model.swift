@@ -50,10 +50,4 @@ class Model: ObservableObject {
         await fetchUsers()
     }
     
-    func formatDate(_ dateString: String) -> String {
-        guard let date = ISO8601DateFormatter().date(from: dateString) else {
-            return dateString
-        }
-        return dateFormatter.string(from: date)
-    }
 }

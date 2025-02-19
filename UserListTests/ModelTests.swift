@@ -70,18 +70,5 @@ final class ModelTests: XCTestCase {
         // Then
         XCTAssertTrue(shouldLoadMore)
     }
-    
-    // Test du formatage de la date
-    func testFormatDate() {
-        // Given
-        let isoDateString = "2024-01-15T10:30:00Z"
-        
-        // When
-        let formattedDate = modelTest.formatDate(isoDateString)
-        
-        // Then
-        XCTAssertFalse(formattedDate.isEmpty)
-        XCTAssertNotEqual(formattedDate, isoDateString)
-    }
 
 }
