@@ -71,4 +71,20 @@ final class ModelTests: XCTestCase {
         XCTAssertTrue(shouldLoadMore)
     }
 
+    // Test de l'échec du chargement des utilisateurs
+    func testFetchUsersFailure() async throws {
+        // Given
+        let repository = UserListRepository { _ in
+            throw URLError(.badServerResponse)
+        }
+        modelTest = Model(repository: repository)
+        
+        // When
+        await modelTest.fetchUsers()
+        
+        // Then
+        try await Task.sleep(nanoseconds: 2_000_000_000) // 2 secondes
+        XCTAssertTrue(modelTest.users.isEmpty)
+        XCTAssertFalse(modelTest.isLoading)
+    }
 }
