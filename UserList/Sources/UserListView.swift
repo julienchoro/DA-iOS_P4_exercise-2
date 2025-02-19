@@ -10,17 +10,7 @@ struct UserListView: View {
                 List(model.users) { user in
                     NavigationLink(destination: UserDetailView(user: user)) {
                         HStack {
-                            AsyncImage(url: URL(string: user.picture.thumbnail)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                            } placeholder: {
-                                ProgressView()
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                            }
+                            userImage(url: user.picture.thumbnail, size: 50)
                             
                             VStack(alignment: .leading) {
                                 Text("\(user.name.first) \(user.name.last)")
@@ -53,18 +43,8 @@ struct UserListView: View {
                         ForEach(model.users) { user in
                             NavigationLink(destination: UserDetailView(user: user)) {
                                 VStack {
-                                    AsyncImage(url: URL(string: user.picture.medium)) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 150, height: 150)
-                                            .clipShape(Circle())
-                                    } placeholder: {
-                                        ProgressView()
-                                            .frame(width: 150, height: 150)
-                                            .clipShape(Circle())
-                                    }
-                                    
+                                    userImage(url: user.picture.medium, size: 150)
+
                                     Text("\(user.name.first) \(user.name.last)")
                                         .font(.headline)
                                         .multilineTextAlignment(.center)
@@ -95,6 +75,20 @@ struct UserListView: View {
             Task {
                 await model.fetchUsers()
             }
+        }
+    }
+    
+    private func userImage(url: String, size: CGFloat) -> some View {
+        AsyncImage(url: URL(string: url)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: size, height: size)
+                .clipShape(Circle())
+        } placeholder: {
+            ProgressView()
+                .frame(width: size, height: size)
+                .clipShape(Circle())
         }
     }
     
