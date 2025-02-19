@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Equatable {
     var id = UUID()
     let name: Name
     let dob: Dob
@@ -27,5 +27,10 @@ struct User: Identifiable {
     // MARK: - Picture
     struct Picture: Codable {
         let large, medium, thumbnail: String
+    }
+    
+    // MARK: - Equatable
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
     }
 }

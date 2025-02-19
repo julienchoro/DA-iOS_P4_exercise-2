@@ -18,6 +18,8 @@
 		2FFB64282AC6D255007F2F80 /* UserListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB64272AC6D255007F2F80 /* UserListApp.swift */; };
 		2FFB642A2AC6D255007F2F80 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB64292AC6D255007F2F80 /* UserListView.swift */; };
 		2FFB642C2AC6D256007F2F80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FFB642B2AC6D256007F2F80 /* Assets.xcassets */; };
+		951F98C32D65FB20000447C0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F98C22D65FB20000447C0 /* Model.swift */; };
+		951F98C72D65FB60000447C0 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F98C62D65FB60000447C0 /* ModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		2FFB64292AC6D255007F2F80 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		2FFB642B2AC6D256007F2F80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FFB64342AC6D256007F2F80 /* UserListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		951F98C22D65FB20000447C0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		951F98C62D65FB60000447C0 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 				2FEF0C6E2ACB416C004DB87C /* UserListResponse.swift */,
 				2FF9D91E2ACB3DD400F3A6C5 /* UserListRepository.swift */,
 				2FF9D9192ACB3CD800F3A6C5 /* HTTPClient */,
+				951F98C22D65FB20000447C0 /* Model.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			children = (
 				2F015BA72ACC938F009A098C /* UserListRepositoryTests.swift */,
 				2FB4823B2ACC98DD0016CBA7 /* UserList.xctestplan */,
+				951F98C62D65FB60000447C0 /* ModelTests.swift */,
 			);
 			path = UserListTests;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951F98C32D65FB20000447C0 /* Model.swift in Sources */,
 				2FF9D91D2ACB3D8800F3A6C5 /* HTTPMethod.swift in Sources */,
 				2FF9D91B2ACB3CE600F3A6C5 /* URLRequest.swift in Sources */,
 				2FFB642A2AC6D255007F2F80 /* UserListView.swift in Sources */,
@@ -249,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F015BA82ACC938F009A098C /* UserListRepositoryTests.swift in Sources */,
+				951F98C72D65FB60000447C0 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
