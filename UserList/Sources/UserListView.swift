@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UserListView: View {
-
+    
     @EnvironmentObject var model: Model
     
     var body: some View {
@@ -41,25 +41,10 @@ struct UserListView: View {
                 .navigationTitle("Users")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Picker(selection: $model.isGridView, label: Text("Display")) {
-                            Image(systemName: "rectangle.grid.1x2.fill")
-                                .tag(true)
-                                .accessibilityLabel(Text("Grid view"))
-                            Image(systemName: "list.bullet")
-                                .tag(false)
-                                .accessibilityLabel(Text("List view"))
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        viewModePicker
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            Task {
-                                await model.reloadUsers()
-                            }
-                        }) {
-                            Image(systemName: "arrow.clockwise")
-                                .imageScale(.large)
-                        }
+                        reloadButton
                     }
                 }
             } else {
@@ -98,25 +83,10 @@ struct UserListView: View {
                 .navigationTitle("Users")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Picker(selection: $model.isGridView, label: Text("Display")) {
-                            Image(systemName: "rectangle.grid.1x2.fill")
-                                .tag(true)
-                                .accessibilityLabel(Text("Grid view"))
-                            Image(systemName: "list.bullet")
-                                .tag(false)
-                                .accessibilityLabel(Text("List view"))
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        viewModePicker
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            Task {
-                                await model.reloadUsers()
-                            }
-                        }) {
-                            Image(systemName: "arrow.clockwise")
-                                .imageScale(.large)
-                        }
+                        reloadButton
                     }
                 }
             }
@@ -127,10 +97,37 @@ struct UserListView: View {
             }
         }
     }
+    
+    private var viewModePicker: some View {
+        Picker(selection: $model.isGridView, label: Text("Display")) {
+            Image(systemName: "rectangle.grid.1x2.fill")
+                .tag(true)
+                .accessibilityLabel(Text("Grid view"))
+            Image(systemName: "list.bullet")
+                .tag(false)
+                .accessibilityLabel(Text("List view"))
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+    
+    private var reloadButton: some View {
+        Button {
+            Task {
+                await model.reloadUsers()
+            }
+        } label: {
+            Image(systemName: "arrow.clockwise")
+                .imageScale(.large)
+        }
+    }
+    
 }
 
 struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
         UserListView()
+            .environmentObject(Model())
     }
 }
+
+
