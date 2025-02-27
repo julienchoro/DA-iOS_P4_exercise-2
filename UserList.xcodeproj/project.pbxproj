@@ -20,6 +20,7 @@
 		2FFB642C2AC6D256007F2F80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FFB642B2AC6D256007F2F80 /* Assets.xcassets */; };
 		951F98C32D65FB20000447C0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F98C22D65FB20000447C0 /* Model.swift */; };
 		951F98C72D65FB60000447C0 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F98C62D65FB60000447C0 /* ModelTests.swift */; };
+		F9DA60962D70792000CE40D9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA60942D70792000CE40D9 /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2FFB64342AC6D256007F2F80 /* UserListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F98C22D65FB20000447C0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		951F98C62D65FB60000447C0 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		F9DA60942D70792000CE40D9 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,14 +74,10 @@
 		2FF9D9172ACB3C0B00F3A6C5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F9DA60972D7081A900CE40D9 /* Model */,
+				F9DA60982D7081CB00CE40D9 /* Views */,
 				2FFB64272AC6D255007F2F80 /* UserListApp.swift */,
-				2FFB64292AC6D255007F2F80 /* UserListView.swift */,
-				2F804AE12ACC976300A46A03 /* UserDetailView.swift */,
-				2FEF0C702ACB45E3004DB87C /* User.swift */,
-				2FEF0C6E2ACB416C004DB87C /* UserListResponse.swift */,
-				2FF9D91E2ACB3DD400F3A6C5 /* UserListRepository.swift */,
 				2FF9D9192ACB3CD800F3A6C5 /* HTTPClient */,
-				951F98C22D65FB20000447C0 /* Model.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -139,6 +137,27 @@
 			path = UserListTests;
 			sourceTree = "<group>";
 		};
+		F9DA60972D7081A900CE40D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FF9D91E2ACB3DD400F3A6C5 /* UserListRepository.swift */,
+				2FEF0C6E2ACB416C004DB87C /* UserListResponse.swift */,
+				2FEF0C702ACB45E3004DB87C /* User.swift */,
+				951F98C22D65FB20000447C0 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9DA60982D7081CB00CE40D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F804AE12ACC976300A46A03 /* UserDetailView.swift */,
+				2FFB64292AC6D255007F2F80 /* UserListView.swift */,
+				F9DA60942D70792000CE40D9 /* UserCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,7 +204,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					2FFB64232AC6D255007F2F80 = {
 						CreatedOnToolsVersion = 14.2;
@@ -247,6 +266,7 @@
 				2F804AE22ACC976300A46A03 /* UserDetailView.swift in Sources */,
 				2FF9D91F2ACB3DD400F3A6C5 /* UserListRepository.swift in Sources */,
 				2FFB64282AC6D255007F2F80 /* UserListApp.swift in Sources */,
+				F9DA60962D70792000CE40D9 /* UserCell.swift in Sources */,
 				2FEF0C712ACB45E3004DB87C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +466,6 @@
 		2FFB644C2AC6D256007F2F80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -465,7 +484,6 @@
 		2FFB644D2AC6D256007F2F80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

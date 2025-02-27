@@ -13,8 +13,7 @@ struct UserListApp: App {
 
     var body: some Scene {
         WindowGroup {
-            UserListView()
-                .environmentObject(model)
+            UserListView(model: model)
         }
     }
 }
